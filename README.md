@@ -35,7 +35,7 @@ Gradle does not know any OS called `android` and we must stick to `linux` in the
 platform definition (which is technically correct). But the Android toolchain
 cannot cross-compile to any arbitrary linux-arm platform, only to a platform
 running the androideabi. The plugin checks the following to make sure it only
-builts for the correct platform:
+builds for the correct platform:
 
 * operatingSystem must be `linux`
 * architecture must be `arm`
