@@ -8,6 +8,9 @@ Android documentation for instructions.
 
 ## How?
 
+*I will soon upload to MavenCentral for convenience. Still waiting for my
+request to get approved.*
+
 ```groovy
 executables {
     main {}

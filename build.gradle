@@ -40,8 +40,8 @@ ext.pomConfiguration = {
 
         scm {
             url 'https://github.com/sgeb/gradle-android-arm-clang-plugin'
-            connection 'scm:https://github.com/sgeb/gradle-android-arm-clang-plugin.git'
-            developerConnection 'scm:https://github.com/sgeb/gradle-android-arm-clang-plugin.git'
+            connection 'scm:git:https://github.com/sgeb/gradle-android-arm-clang-plugin.git'
+            developerConnection 'scm:git:https://github.com/sgeb/gradle-android-arm-clang-plugin.git'
         }
 
         licenses {
