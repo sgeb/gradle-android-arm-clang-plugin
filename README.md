@@ -10,10 +10,22 @@ instructions.
 
 ## How?
 
-*I will soon upload to MavenCentral for convenience. Still waiting for my
-request to get approved.*
-
 ```groovy
+buildscript {
+    repositories {
+        maven {
+            url "https://sgeb.github.io/maven_repo/"
+        }
+    }
+
+    dependencies {
+        classpath "me.sgeb.gradle.plugins:gradle-android-arm-clang-plugin:0.1.0"
+    }
+}
+
+apply plugin: 'cpp'
+apply plugin: 'android-arm-clang'
+
 executables {
     main {}
 }
