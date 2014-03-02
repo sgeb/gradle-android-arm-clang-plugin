@@ -1,5 +1,7 @@
 # Gradle Android-Arm-Clang plugin
 
+[![Build Status](https://travis-ci.org/sgeb/gradle-android-arm-clang-plugin.png?branch=master)](https://travis-ci.org/sgeb/gradle-android-arm-clang-plugin)
+
 This Gradle plugin provides the Android-Arm-Clang toolchain to cross-compile
 C/C++ code. The toolchain must be installed separately, please refer to the
 Android documentation for instructions.
@@ -38,6 +40,72 @@ builts for the correct platform:
 * operatingSystem must be `linux`
 * architecture must be `arm`
 * platform name (`android-arm` in this example) must contain the string `android`
+
+## Multiple platforms in peaceful co-existence
+
+The following example defines multiple platforms. They can be (cross-)compiled
+using the same build folder and the same code base.
+
+```groovy
+executables {
+    main {}
+}
+
+model {
+    platforms {
+        "osx-x64" {
+            operatingSystem "mac os x"
+            architecture "x86_64"
+        }
+        "android-arm" {
+            operatingSystem "linux"
+            architecture "arm"
+        }
+    }
+}
+
+task build {
+    description "Build all binaries on all possible platforms."
+    dependsOn binaries.matching { it.buildable }
+}
+```
+
+The `tasks --all` command shows which platforms can be built with the configured
+toolchains and the compilers found in the `PATH`.
+
+```
+> ./gradlew tasks --all
+[...]
+build - Build all binaries on all possible platforms. [android-armMainExecutable, osx-x64MainExecutable]
+```
+
+The same command without the Android toolchain in the `PATH`:
+
+```
+> ./gradlew tasks --all
+[...]
+build - Build all binaries on all possible platforms. [osx-x64MainExecutable]
+```
+
+If a platform/binary combination cannot be fulfilled, Gradle will explain why:
+
+```
+> ./gradlew android-armMainExecutable
+[...]
+:compileAndroid-armMainExecutableMainCpp FAILED
+
+FAILURE: Build failed with an exception.
+
+* What went wrong:
+Execution failed for task ':compileAndroid-armMainExecutableMainCpp'.
+> No tool chain is available to build for platform 'android-arm':
+    - Tool chain 'visualCpp' (Visual Studio): Visual Studio is not available on this operating system.
+    - Tool chain 'gcc' (GNU GCC): XCode g++ is a wrapper around Clang. Treating it as Clang and not GCC.
+    - Tool chain 'clang' (Clang): Don't know how to build for platform 'android-arm'.
+    - Tool chain 'androidArmClang' (AndroidArmClang): Could not find C++ compiler 'arm-linux-androideabi-clang++' in system path.
+
+BUILD FAILED
+```
 
 ## Contributing
 
