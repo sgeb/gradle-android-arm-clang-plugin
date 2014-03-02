@@ -2,9 +2,11 @@
 
 [![Build Status](https://travis-ci.org/sgeb/gradle-android-arm-clang-plugin.png?branch=master)](https://travis-ci.org/sgeb/gradle-android-arm-clang-plugin)
 
-This Gradle plugin provides the Android-Arm-Clang toolchain to cross-compile
-C/C++ code. The toolchain must be installed separately, please refer to the
-Android documentation for instructions.
+This Gradle plugin integrates the [Android NDK
+toolchain](https://developer.android.com/tools/sdk/ndk/index.html) (ARM,
+Clang-based) into Gradle to cross-compile C/C++ code. The standalone toolchain
+must be installed separately, please refer to the Android documentation for
+instructions.
 
 ## How?
 
