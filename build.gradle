@@ -31,10 +31,10 @@ jar {
 ext.pomConfiguration = {
     project {
         name 'Gradle Android-Arm-Clang Plugin'
-        description 'Gradle plugin providing Android-Arm-Clang toolchain to ' +
-                'cross-compile C/C++ code. The toolchain must be installed ' +
-                'separately, please refer to the Android documentation for ' +
-                'instructions.'
+        description 'Integrates the Android NDK toolchain into Gradle to ' +
+                'cross-compile C/C++ code. The standalone toolchain must be ' +
+                'installed separately, please refer to the Android ' +
+                'documentation for instructions.'
         url 'https://github.com/sgeb/gradle-android-arm-clang-plugin'
         inceptionYear '2014'
 
